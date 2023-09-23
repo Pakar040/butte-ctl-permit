@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 from typing import List, Dict
-from classes.coordinates import Coordinates
 from openpyxl import load_workbook
 
 
@@ -10,7 +9,6 @@ class NWEXLSX:
     """
 
     def __init__(self, filepath: str):
-        self.pole_data_list = []
         self.filepath = filepath
         self.worksheet = None
         self.column_headers = None
@@ -18,6 +16,13 @@ class NWEXLSX:
         self._get_column_headers()
         self.make_ready_start_col = 12
         self.make_ready_end_col = 18
+        self.data = self.extract_data()
+
+    def __repr__(self):
+        string = ""
+        for pole_data in self.data:
+            string += f"{pole_data}" + "\n"
+        return string
 
     def _read_xlsx(self):
         workbook = load_workbook(self.filepath)
@@ -102,14 +107,3 @@ class NWEXLSX:
                 pole_data[header] = self.worksheet.cell(row=start_row, column=index + 1).value
 
         return pole_data
-
-
-@dataclass
-class NWEPole:
-    """
-    Contains the pole data provided by the NWE XLSX file
-    """
-
-    pole_number: str
-    coordinates: Coordinates
-    attachment_list: list = field(default_factory=list)
