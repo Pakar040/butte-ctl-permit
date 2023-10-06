@@ -89,7 +89,7 @@ class NWEXLSX:
         else:
             end_row = pole_start_rows[next_index]
 
-        return end_row
+        return end_row - 1
 
     def _extract_single_pole_data(self, start_row: int, end_row: int) -> Dict:
         pole_data = {}
