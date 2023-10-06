@@ -152,7 +152,8 @@ class CTLXLSX:
                     cell_data = cell_data + "  " + self._get_attachment_height(attachment_obj)
 
         existing_telco_attach_height_column = 22  # V
-        self.write_to_cell(value=cell_data, row=row, column=existing_telco_attach_height_column, sheet=self.active_sheet)
+        self.write_to_cell(value=cell_data, row=row, column=existing_telco_attach_height_column,
+                           sheet=self.active_sheet)
 
     def write_lowest_power_secondary(self, row: int, ctl_pole: 'CTLPole'):
         lowest_power_attachment = None
