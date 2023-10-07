@@ -1,7 +1,7 @@
 from classes.nwe import NWEXLSX
 from classes.aldenone import AldenoneXLSX
 from classes.organize_ctl_data import CTLPoleListFactory
-from classes.ctl_updated_multisheet import CTLXLSX
+from classes.ctl import CTLXLSX
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
         ctl_duplicate_pole_list.append(item)
         ctl_duplicate_pole_list.append(item)
         ctl_duplicate_pole_list.append(item)
-    ctl_xlsx = CTLXLSX(filepath='output/output.xls')
+    ctl_xlsx = CTLXLSX(filepath='output/output.xlsx')
     ctl_xlsx.set_pole_data_list(ctl_pole_list)
     ctl_xlsx.write_all_data_to_workbook()
     ctl_xlsx.save_workbook()
