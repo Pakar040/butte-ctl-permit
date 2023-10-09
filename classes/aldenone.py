@@ -33,8 +33,12 @@ class AldenoneXLSX:
 
     def extract_data(self) -> List:
         pole_data = []
-        for row in range(2, self.worksheet.max_row + 1):
+        row = 2
+        while self.worksheet.cell(row=row, column=1).value is not None:
             pole_data.append(self._extract_single_pole_data(row))
+            row = row + 1
+        # for row in range(2, self.worksheet.max_row):
+        #     pole_data.append(self._extract_single_pole_data(row))
 
         return pole_data
 

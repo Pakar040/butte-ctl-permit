@@ -33,9 +33,10 @@ class CTLPoleListFactory:
         aldenone_pole_number = aldenone_pole['Pole Number']
         for nwe_pole in self.nwe_xlsx_obj.data:
             nwe_pole_number = nwe_pole['Pole Number']
-            is_same_pole_number = aldenone_pole_number == nwe_pole_number
+            is_same_pole_number = str(aldenone_pole_number) == str(nwe_pole_number)
             if is_same_pole_number:
                 return nwe_pole
+        return {}
 
     def create_ctl_poles_list(self):
         ctl_pole_list = []
@@ -48,9 +49,10 @@ class CTLPoleListFactory:
 
     @staticmethod
     def _create_single_ctl_pole(pole_data):
+        print(pole_data)
         arguments = {
             'pole_number': pole_data['Pole Number'],
-            'ctl_pole_number': pole_data['CTL Tags'],
+            'ctl_pole_number': pole_data['CTL Tag'],
             'latitude': pole_data['Latitude'],
             'longitude': pole_data['Longitude'],
             'pole_height_class': pole_data['Pole Ht/ Class'],
